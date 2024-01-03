@@ -1,4 +1,6 @@
-MODULES := functions main
+SHELL = bash
+
+MODULES := main functions
 
 EXE := prog
 
@@ -19,15 +21,25 @@ include $(patsubst %,\
 # determine the object files
 OBJ := \
 	$(patsubst %.c,%.o, \
-	$(filter %.c,$(SRC)))
+	$(filter %.c,$(SRC))) \
+	$(patsubst %.y,%.o, \
+	$(filter %.y,$(SRC)))
 
 # link the program
 $(EXE): $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LIBS)
 
-# include the C include dependencies
+# include the C include dependecies
+DEPEND = $(OBJ:%.o=%.d)
+include $(DEPEND)
+
+# calculate the C include dependencies
 %.d: %.c
-	depend.sh `dirname $*.c`$(CFLAGS) $*.c > $@
+	./depend.sh $(shell dirname $*.c) $(CFLAGS) $*.c > $@
+
+
+#	./depend.sh `dirname $*.c` $(CFLAGS) $*.c > $@
+
 
 clean:
-	rm -rf $(OBJ) $(EXE)
+	rm -rf $(OBJ) $(EXE) */*.d
