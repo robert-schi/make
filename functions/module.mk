@@ -1,1 +1,1 @@
-SRC += functions/functions.c
+SRC += functions/addition.c

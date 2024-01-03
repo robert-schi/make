@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "functions.h"
+#include "addition.h"
 
 int main(void)
 {

@@ -1,6 +1,6 @@
 SHELL = bash
 
-MODULES := main functions
+MODULES := app functions
 
 EXE := prog
 
@@ -15,8 +15,7 @@ LIBS :=
 SRC :=
 
 # include the description for each module
-include $(patsubst %,\
-	%/module.mk,$(MODULES))
+include $(patsubst %,%/module.mk,$(MODULES))
 
 # determine the object files
 OBJ := \
@@ -25,21 +24,22 @@ OBJ := \
 	$(patsubst %.y,%.o, \
 	$(filter %.y,$(SRC)))
 
+$(info OBJ $(OBJ))
+
 # link the program
 $(EXE): $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LIBS)
 
 # include the C include dependecies
 DEPEND = $(OBJ:%.o=%.d)
+
 include $(DEPEND)
+
+$(info DEPEND $(DEPEND))
 
 # calculate the C include dependencies
 %.d: %.c
 	./depend.sh $(shell dirname $*.c) $(CFLAGS) $*.c > $@
-
-
-#	./depend.sh `dirname $*.c` $(CFLAGS) $*.c > $@
-
 
 clean:
 	rm -rf $(OBJ) $(EXE) */*.d
