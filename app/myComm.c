@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "myComm.h"
 
 int myOff()
