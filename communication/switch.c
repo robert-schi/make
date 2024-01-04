@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "switch.h"
 
 #include "myComm.h"
