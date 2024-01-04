@@ -1,6 +1,6 @@
 SHELL = bash
 
-MODULES := app functions
+MODULES := app functions communication
 
 EXE := prog
 

@@ -1,1 +1,1 @@
-SRC += app/main.c
+SRC += app/main.c app/myComm.c
