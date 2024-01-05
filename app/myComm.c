@@ -4,12 +4,12 @@
 
 int myOff()
 {
-    printf("Switched off.");
+    printf("Switched off.\n");
     return 0;
 }
 
 int myOn()
 {
-    printf("Switched on.");
+    printf("Switched on.\n");
     return 0;
 }

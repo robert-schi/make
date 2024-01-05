@@ -1,1 +1,1 @@
-SRC += communication/switch.c
+SRC += communication/controlBoard.c

@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-#include "switch.h"
+#include "controlBoard.h"
 
 #include "myComm.h"
 
-int Switch(int a)
+int setState(int a)
 {
     switch(a)
     {
